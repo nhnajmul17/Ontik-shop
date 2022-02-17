@@ -1,0 +1,22 @@
+.bg-img{
+    background-image: url('../../Images/Banner.jpeg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    text-align: center;
+    padding: 20px 0;
+    height: 80vh;
+    color: white;
+    position: relative;
+}
+
+.bg-img h4{
+    
+    font-size: 18px;
+    top: 2rem;
+    padding-bottom: 1rem;
+    }
