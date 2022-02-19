@@ -8,11 +8,14 @@ import Header from './Components/Header/Header';
 import OrderReview from './Components/OrderReview/OrderReview';
 import Shop from './Pages/Shop/Shop';
 import ProductDetail from './Pages/ProductDetail/ProductDetail';
-import Order from './Pages/Order/Order';
 import Footer from './Components/Footer/Footer';
 import AuthProvider from './Context/AuthProvider';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import UserOrders from './Pages/Dashboard/UserOrders/UserOrders';
+import AdminDashboard from './Pages/Dashboard/AdminDashboard/AdminDashboard';
+import AddProduct from './Pages/Dashboard/AdminDashboard/AddProduct/AddProduct';
+import AllOrders from './Pages/Dashboard/AdminDashboard/AllOrders/AllOrders';
+import ManageAllProduct from './Pages/Dashboard/AdminDashboard/ManageAllProduct/ManageAllProduct';
 
 function App() {
   return (
@@ -27,7 +30,11 @@ function App() {
             <Route path='/detail/:id' element={<PrivateRoute><ProductDetail /> </PrivateRoute>}></Route>
             <Route path='/orderreview' element={<OrderReview />}></Route>
             <Route path='/userorders' element={<UserOrders />}></Route>
-            <Route path='/order' element={<PrivateRoute> <Order /></PrivateRoute>}></Route>
+            <Route path='/admin' element={<AdminDashboard />}>
+              <Route path='addproduct' element={<AddProduct />}></Route>
+              <Route path='allorders' element={<AllOrders />}></Route>
+              <Route path='manageAllProducts' element={<ManageAllProduct />}></Route>
+            </Route>
             <Route path='/login' element={<Login />}></Route>
             <Route path='/signup' element={<Signup />}></Route>
             <Route path='*' element={<Error />}></Route>

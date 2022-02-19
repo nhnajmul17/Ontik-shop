@@ -7,7 +7,8 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import swal from 'sweetalert';
 import useAuth from '../../hooks/useAuth';
-import { fetchItems } from '../../Redux/ShopSlice/ShopSlice';
+import { fetchProducts } from '../../Redux/ShopSlice/ShopSlice';
+import './ProductDetail.css'
 
 
 const ProductDetail = () => {
@@ -63,7 +64,7 @@ const ProductDetail = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchItems())
+        dispatch(fetchProducts())
     }, [dispatch])
 
     const products = useSelector(state => state.shop.items)
@@ -78,7 +79,7 @@ const ProductDetail = () => {
         <div className='m-auto p-5'>
             {isLoading ? <p>Loading...</p> : <div className='row'>
                 <div className='col-md-6 col-sm-12' >
-                    <img style={{ width: '300px' }} src={product?.img} alt="" />
+                    <img className='img-hover' style={{ width: '300px' }} src={product?.img} alt="" />
                 </div>
                 <div className=' pt-5  col-md-6 col-sm-12'>
                     <h4 className='fw-bold'>{product?.name}</h4>

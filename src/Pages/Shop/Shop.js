@@ -3,8 +3,7 @@ import { Button, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import SingleProduct from '../../Components/Products/SingleProduct/SingleProduct';
-import { addToCart, fetchItems, setproducts } from '../../Redux/ShopSlice/ShopSlice';
-import { getStoredCart } from '../../Utiles/Fakedb';
+import { fetchProducts, setproducts } from '../../Redux/ShopSlice/ShopSlice';
 
 
 const Shop = () => {
@@ -14,37 +13,9 @@ const Shop = () => {
 
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(fetchItems())
+        dispatch(fetchProducts())
     }, [dispatch])
 
-    useEffect(() => {
-        const savedCart = getStoredCart();
-        const keys = Object.keys(savedCart)
-
-        fetch('http://localhost:5000/products/bykeys', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(keys)
-        })
-            .then(res => res.json())
-            .then(products => {
-                if (products.length) {
-                    const storedCart = [];
-                    for (const key in savedCart) {
-                        const addedProduct = products.find(product => product.key === key);
-                        if (addedProduct) {
-                            //set quantity
-                            const quantity = savedCart[key];
-                            addedProduct.quantity = quantity
-                            storedCart.push(addedProduct)
-                        }
-                    }
-                    dispatch(addToCart(storedCart))
-                }
-            })
-    }, [dispatch])
 
     const [search, setsearch] = useState('')
     const searchName = e => {

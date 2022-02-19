@@ -5,16 +5,30 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import swal from 'sweetalert';
 import { useForm } from 'react-hook-form';
 import { Table } from 'react-bootstrap';
-
+/* import { useDispatch } from 'react-redux';
+import { fetchCartProducts, removefromcart } from '../../Redux/ShopSlice/ShopSlice';
+import { useSelector } from 'react-redux';
+ */
 const OrderReview = () => {
     const { user } = useAuth()
+
+    // const dispatch = useDispatch()
+    // useEffect(() => {
+    //     dispatch(fetchCartProducts(user.email))
+    // }, [dispatch])
+
+    // const orders = useSelector(state => state.shop.cartProducts)
+
+
     const [orders, setOrders] = useState([])
 
     useEffect(() => {
         fetch(`http://localhost:5000/addtocart/${user.email}`)
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [])
+    }, [user])
+
+
 
     const handleDelete = (id) => {
         fetch(`http://localhost:5000/addtocart/${id}`, {
@@ -24,11 +38,12 @@ const OrderReview = () => {
             .then(data => {
                 if (data.deletedCount) {
                     swal({
-                        title: "Product Deleted!",
+                        title: "Removed From Cart!",
                         text: "Thank You!",
                         icon: "success",
                         button: "Ok",
                     });
+                    // removefromcart(id)
                     const remaining = orders.filter(order => order._id !== id)
                     setOrders(remaining)
                 }
@@ -60,7 +75,8 @@ const OrderReview = () => {
     const {
         register,
         handleSubmit,
-        reset
+        reset,
+        formState: { errors }
     } = useForm();
 
 
@@ -81,6 +97,7 @@ const OrderReview = () => {
     const onSubmit = (data) => {
         data.quantity = totalQuantity
         data.price = grandTotal
+        data.status = 'Pending'
         fetch('http://localhost:5000/orders', {
             method: 'POST',
             headers: {
@@ -191,12 +208,20 @@ const OrderReview = () => {
 
                                 <input className='w-50 rounded mt-3' placeholder='Address'  {...register("Address", {
                                     required: true,
-                                })} /> <br />
+                                })} />
+                                <br />
+                                {errors.Address && <span className='text-danger'>This field is required</span>}
+                                <br />
+
                                 <input className='w-50 rounded mt-3' placeholder='Phone Number'  {...register("phone", {
                                     required: true,
                                 })} />
+
                                 <br />
-                                <button type="submit" className="btn btn-warning mt-3">
+                                {errors.phone && <span className='text-danger'>This field is required</span>}
+                                <br />
+
+                                <button type="submit" className="btn btn-warning mt-3 mb-3">
                                     Place order
                                 </button>
                             </form>

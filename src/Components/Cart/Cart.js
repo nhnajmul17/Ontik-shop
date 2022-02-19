@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import { useSelector } from 'react-redux';
 
 const Cart = () => {
@@ -33,4 +33,4 @@ const Cart = () => {
     );
 };
 
-export default Cart;
+export default Cart; */

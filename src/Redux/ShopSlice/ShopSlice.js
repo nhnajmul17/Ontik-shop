@@ -1,21 +1,37 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 
-export const fetchProducts = createAsyncThunk("shop/products", async () => {
-    const response = await fetch('/products.json').then((res) => res.json());
-    return response;
-});
-
-export const fetchItems = createAsyncThunk("shop/items", async () => {
+export const fetchProducts = createAsyncThunk("shop/items", async () => {
     const response = await fetch('http://localhost:5000/products')
         .then((res) => res.json());
     return response;
 });
+
+export const fetchCartProducts = createAsyncThunk("shop/products", async (email) => {
+    const response = await fetch(`http://localhost:5000/addtocart/${email}`)
+        .then(res => res.json())
+    return response;
+});
+export const fetchUserOrders = createAsyncThunk("shop/orders", async (email) => {
+    const response = await fetch(`http://localhost:5000/orders?email=${email}`)
+        .then(res => res.json())
+    return response;
+});
+
+export const fetchAllOrders = createAsyncThunk("shop/allOrders", async (email) => {
+    const response = await fetch('http://localhost:5000/allorders')
+        .then(res => res.json())
+    return response;
+});
+
+
 const initialState = {
-    products: [],
+    cartProducts: [],
     addToCart: [],
     items: [],
-    searchItem: []
+    searchItem: [],
+    userOrders: [],
+    allOrders: []
 }
 
 
@@ -27,7 +43,7 @@ export const ShopSlice = createSlice({
             state.addToCart = (payload)
         },
         removefromcart: (state, action) => {
-            state.addToCart = state.addToCart.filter(item => item._id !== action.payload)
+            state.cartProducts = state.cartProducts.filter(item => item._id !== action.payload)
         },
         setproducts: (state, { payload }) => {
             state.searchItem = payload;
@@ -35,12 +51,19 @@ export const ShopSlice = createSlice({
 
     },
     extraReducers: (builder) => {
+
         builder.addCase(fetchProducts.fulfilled, (state, action) => {
-            state.products = action.payload;
-        });
-        builder.addCase(fetchItems.fulfilled, (state, action) => {
             state.items = action.payload;
             state.searchItem = action.payload;
+        });
+        builder.addCase(fetchCartProducts.fulfilled, (state, action) => {
+            state.cartProducts = action.payload;
+        });
+        builder.addCase(fetchUserOrders.fulfilled, (state, action) => {
+            state.userOrders = action.payload;
+        });
+        builder.addCase(fetchAllOrders.fulfilled, (state, action) => {
+            state.allOrders = action.payload;
         });
 
     },

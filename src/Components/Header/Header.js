@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const Header = () => {
-    // const addedcart = useSelector((state) => state.shop.addToCart)
     const [orders, setOrders] = useState([])
     useEffect(() => {
         fetch(`http://localhost:5000/addtocart/${user.email}`)
@@ -24,7 +23,8 @@ const Header = () => {
                         <Nav className="me-auto">
                             <Nav.Link as={Link} to="/home">Home</Nav.Link>
                             <Nav.Link as={Link} to="/shop">Shop</Nav.Link>
-                            {/* <Nav.Link as={Link} to="/orderreview">Order Review</Nav.Link> */}
+                            {user.email && <Nav.Link as={Link} to="/admin">Admin</Nav.Link>}
+
                             {user.email && <Nav.Link as={Link} to="/userorders">User Orders</Nav.Link>}
 
                         </Nav>
