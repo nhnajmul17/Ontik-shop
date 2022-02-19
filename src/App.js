@@ -16,6 +16,7 @@ import AdminDashboard from './Pages/Dashboard/AdminDashboard/AdminDashboard';
 import AddProduct from './Pages/Dashboard/AdminDashboard/AddProduct/AddProduct';
 import AllOrders from './Pages/Dashboard/AdminDashboard/AllOrders/AllOrders';
 import ManageAllProduct from './Pages/Dashboard/AdminDashboard/ManageAllProduct/ManageAllProduct';
+import AdminRoute from './Components/AdminRoute/AdminRoute';
 
 function App() {
   return (
@@ -31,9 +32,9 @@ function App() {
             <Route path='/orderreview' element={<OrderReview />}></Route>
             <Route path='/userorders' element={<UserOrders />}></Route>
             <Route path='/admin' element={<AdminDashboard />}>
-              <Route path='addproduct' element={<AddProduct />}></Route>
-              <Route path='allorders' element={<AllOrders />}></Route>
-              <Route path='manageAllProducts' element={<ManageAllProduct />}></Route>
+              <Route path='addproduct' element={<AdminRoute><AddProduct /></AdminRoute>}></Route>
+              <Route path='allorders' element={<AdminRoute><AllOrders /></AdminRoute>}></Route>
+              <Route path='manageAllProducts' element={<AdminRoute><ManageAllProduct /></AdminRoute>}></Route>
             </Route>
             <Route path='/login' element={<Login />}></Route>
             <Route path='/signup' element={<Signup />}></Route>

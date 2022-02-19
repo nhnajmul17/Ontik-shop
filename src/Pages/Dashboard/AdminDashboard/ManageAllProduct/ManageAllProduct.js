@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { Table } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt, faPenAlt } from '@fortawesome/free-solid-svg-icons'
 import swal from 'sweetalert';
 import { fetchProducts } from '../../../../Redux/ShopSlice/ShopSlice';
 
@@ -76,7 +78,7 @@ const ManageAllProduct = () => {
                                 }
                                 className="btn btn-danger"
                             >
-                                Delete
+                                <FontAwesomeIcon icon={faTrashAlt} />  Delete
                             </button>
 
 
@@ -87,7 +89,7 @@ const ManageAllProduct = () => {
                                 }
                                 className="btn btn-info"
                             >
-                                Update
+                                <FontAwesomeIcon icon={faPenAlt} /> Update
                             </button>
 
 

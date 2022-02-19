@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useFirebase from '../../hooks/useFirebase';
+import loginImg from '../../Images/login.png'
 
 const Login = () => {
     const [logindata, setLoginData] = useState('')
@@ -23,18 +24,28 @@ const Login = () => {
     }
     return (
         <div className='m-5'>
-            <h1>Please Login</h1>
-            <form onClick={handleLogin}>
-                <label>Email</label><br />
-                <input onBlur={handleOnChange} name='email' type="text" /><br />
-                <label>Password</label><br />
-                <input onBlur={handleOnChange} name='password' type='password' /><br />
-                <br />
-                <input type="submit" value="Login" />
-            </form>
-            <br />
+            <h2>Login To Ontik</h2>
+            <div className="row">
+                <div className="col-md-6 col-sm-12">
+                    <img className='img-fluid' src={loginImg} alt="login-img" />
 
-            <p>   Don't Have An Account?  <Link to='/signup'>Register Now </Link></p>
+                </div>
+                <div className="col-md-6 col-sm-12 p-5">
+                    <form onSubmit={handleLogin}>
+                        <label>Email</label><br />
+                        <input className='rounded-pill' onBlur={handleOnChange} name='email' type="text" /><br />
+                        <label>Password</label><br />
+                        <input className='rounded-pill' onBlur={handleOnChange} name='password' type='password' /><br />
+                        <br />
+                        <input className=' rounded-pill btn btn-warning' type="submit" value="Login" />
+                    </form>
+                    <br />
+
+                    <p>   Don't Have An Account?  <Link to='/signup'>Register Now </Link></p>
+
+                </div>
+            </div>
+
         </div>
     );
 };

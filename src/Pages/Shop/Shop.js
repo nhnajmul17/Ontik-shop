@@ -6,6 +6,11 @@ import SingleProduct from '../../Components/Products/SingleProduct/SingleProduct
 import { fetchProducts, setproducts } from '../../Redux/ShopSlice/ShopSlice';
 
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
+
+
 const Shop = () => {
     const AllItems = useSelector(state => state.shop.items)
     const products = useSelector(state => state.shop.searchItem)
@@ -39,11 +44,11 @@ const Shop = () => {
             <div className='mb-5'>
 
                 <form onSubmit={handleSearch}>
-                    <input className='w-50  me-2'
+                    <input data-aos="fade-down-right" data-aos-duration="2000" className='w-50  me-2'
                         type="text"
                         onBlur={searchName}
                         placeholder='Search your Product' />
-                    <Button className='btn btn-warning rounded-pill' type='submit'>Search</Button>
+                    <Button data-aos="fade-up-left" data-aos-duration="2000" className='btn btn-warning rounded-pill' type='submit'>Search</Button>
 
                 </form>
 

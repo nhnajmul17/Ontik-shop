@@ -7,35 +7,36 @@ import useAuth from '../../hooks/useAuth';
 
 const Header = () => {
     const [orders, setOrders] = useState([])
+    const { user, logout, admin } = useAuth()
+
     useEffect(() => {
         fetch(`http://localhost:5000/addtocart/${user.email}`)
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [orders])
-    const { user, logout } = useAuth()
+    }, [user.email, orders])
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand className='fw-bold' href="/">Ontik-Shop</Navbar.Brand>
+                    <Navbar.Brand data-aos="fade-right" data-aos-duration="2000" className='fw-bold' href="/">Ontik-Shop</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link as={Link} to="/home">Home</Nav.Link>
-                            <Nav.Link as={Link} to="/shop">Shop</Nav.Link>
-                            {user.email && <Nav.Link as={Link} to="/admin">Admin</Nav.Link>}
-
-                            {user.email && <Nav.Link as={Link} to="/userorders">User Orders</Nav.Link>}
 
                         </Nav>
-                        <Nav>
+                        <Nav data-aos="fade-left" data-aos-duration="2000" >
                             {user?.email && <p className='text-white mt-2 me-5'>
                                 Name: {user.displayName}
                             </p>}
 
+                            <Nav.Link as={Link} to="/home">Home</Nav.Link>
+                            <Nav.Link as={Link} to="/shop">Shop</Nav.Link>
+                            {user.email && <Nav.Link as={Link} to="/userorders">User Orders</Nav.Link>}
+                            {admin && <Nav.Link as={Link} to="/admin">Admin DashBoard</Nav.Link>}
+
+
                             {user?.email ? <Nav.Link onClick={logout} className='text-secondary'>Logout</Nav.Link> : <Nav.Link as={Link} to="/login">Login</Nav.Link>}
-                            {/* <Nav.Link as={Link} to="/login">Login</Nav.Link> */}
-                            {/* <Nav.Link as={Link} to="/signup">Signup</Nav.Link> */}
+
                             <Link className=' text-decoration-none' to='/orderreview'><p className=' text-decoration-none text-secondary fw-b ms-4 pt-2'> <FontAwesomeIcon icon={faShoppingCart} />{' '}{orders?.length}</p></Link>
 
 

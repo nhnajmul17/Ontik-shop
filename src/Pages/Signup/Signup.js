@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import signupImg from '../../Images/signup.png'
 
 const Signup = () => {
     const [registerdata, setRegisterData] = useState({})
@@ -24,25 +25,35 @@ const Signup = () => {
     }
     return (
         <div className='m-5'>
-            <h1>Register Now </h1>
+            <h2>Register Now </h2>
+            <div className="row">
+                <div className="col-md-6 col-sm-12">
+                    <img className='img-fluid' src={signupImg} alt="login-img" />
 
-            <form onSubmit={handleRegister}>
-                <label htmlFor="">Name</label><br />
-                <input type="text" name="name"
-                    onChange={handleOnChange} id="" placeholder='Your Name' /><br />
-                <label htmlFor="">Email</label><br />
-                <input type="email" name="email"
-                    onChange={handleOnChange} id="" placeholder='Your Email' /><br />
-                <label htmlFor="">Password</label><br />
-                <input type="password" name="password"
-                    onChange={handleOnChange} id="" placeholder='Your Password' /><br /><br />
-                <input type="submit" value="Register" />
+                </div>
+                <div className="col-md-6 col-sm-12 p-5">
+                    <form onSubmit={handleRegister}>
+                        <label htmlFor="">Name</label><br />
+                        <input className='rounded-pill' type="text" name="name"
+                            onChange={handleOnChange} id="" placeholder='Your Name' /><br />
+                        <label htmlFor="">Email</label><br />
+                        <input className='rounded-pill' type="email" name="email"
+                            onChange={handleOnChange} id="" placeholder='Your Email' /><br />
+                        <label htmlFor="">Password</label><br />
+                        <input className='rounded-pill' type="password" name="password"
+                            onChange={handleOnChange} id="" placeholder='Your Password' /><br /><br />
+                        <input className=' rounded-pill btn btn-warning' type="submit" value="Register" />
 
-            </form>
-            <br />
+                    </form>
+                    <br />
 
-            <br /><br />
-            <p>   Already have an account? <Link to='/login'>Login Now </Link></p>
+                    <br /><br />
+                    <p>   Already have an account? <Link to='/login'>Login Now </Link></p>
+
+                </div>
+            </div>
+
+
 
             {/* <p className='text-danger'>{error}</p> */}
         </div>

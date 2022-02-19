@@ -128,8 +128,8 @@ const OrderReview = () => {
         // <div className='p-5'>
         <div>
             <div className="col">
-                <h4>Cart</h4>
-                <div className='p-5'>
+                <h4>Cart Items</h4>
+                <div data-aos="zoom-out" data-aos-duration="4000" className='p-5'>
                     <Table responsive className="table mb-0">
                         <thead>
                             <tr>
@@ -197,7 +197,8 @@ const OrderReview = () => {
                 <h3>Fill up the Form to place Order</h3>
                 <div className="container">
                     <div className="row">
-                        <div className='col-lg-6 col-sm-12 mt-5'>
+                        <div data-aos="fade-up"
+                            data-aos-duration="3000" className='col-lg-6 col-sm-12 mt-5'>
                             <form onSubmit={handleSubmit(onSubmit)}>
 
                                 <input className='w-50 rounded mt-3' placeholder='Name' defaultValue={user.displayName} {...register("name")} /> <br />
@@ -226,7 +227,9 @@ const OrderReview = () => {
                                 </button>
                             </form>
                         </div>
-                        <div className='mt-5 col-lg-6 col-sm-12'>
+                        <div data-aos="fade-down"
+                            data-aos-easing="linear"
+                            data-aos-duration="3000" className='mt-5 col-lg-6 col-sm-12'>
                             <div>
                                 <h3>Order Summary</h3>
                                 <h5>Items Ordered: {totalQuantity}</h5>

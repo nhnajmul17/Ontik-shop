@@ -78,10 +78,10 @@ const ProductDetail = () => {
     return (
         <div className='m-auto p-5'>
             {isLoading ? <p>Loading...</p> : <div className='row'>
-                <div className='col-md-6 col-sm-12' >
+                <div data-aos="zoom-in-up" data-aos-duration="2000" className='col-md-6 col-sm-12' >
                     <img className='img-hover' style={{ width: '300px' }} src={product?.img} alt="" />
                 </div>
-                <div className=' pt-5  col-md-6 col-sm-12'>
+                <div data-aos="fade-left" data-aos-duration="2000" className=' pt-5  col-md-6 col-sm-12'>
                     <h4 className='fw-bold'>{product?.name}</h4>
                     <h3 className='text-warning'>${product?.price}</h3>
                     <p>Category: {product?.category}</p>
