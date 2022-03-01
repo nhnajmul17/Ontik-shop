@@ -41,7 +41,7 @@ const ProductDetail = () => {
         data.name = product.name
         data.price = product.price;
         data.email = user.email;
-        fetch('http://localhost:5000/addtocart', {
+        fetch('https://safe-sands-77688.herokuapp.com/addtocart', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

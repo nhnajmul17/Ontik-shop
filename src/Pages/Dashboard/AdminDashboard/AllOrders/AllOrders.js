@@ -10,7 +10,7 @@ const AllOrders = () => {
     /* const [orders, setOrders] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/allorders')
+        fetch('https://safe-sands-77688.herokuapp.com/allorders')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, []) */
@@ -25,7 +25,7 @@ const AllOrders = () => {
 
 
     const handleUpdate = (id) => {
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`https://safe-sands-77688.herokuapp.com/orders/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             // body: JSON.stringify(orders),
@@ -58,8 +58,8 @@ const AllOrders = () => {
                 </thead>
                 <tbody>
                     {
-                        orders.map(order => <tr>
-                            <td></td>
+                        orders.map((order, index) => <tr>
+                            <td>{index + 1}</td>
                             <td>{order.name}</td>
                             <td>${order.price}</td>
                             <td>{order.createdAt}</td>

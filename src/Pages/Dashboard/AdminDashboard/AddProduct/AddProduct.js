@@ -4,7 +4,7 @@ import swal from 'sweetalert';
 
 const AddProduct = () => {
     const onSubmit = (data) => {
-        fetch('http://localhost:5000/products', {
+        fetch('https://safe-sands-77688.herokuapp.com/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

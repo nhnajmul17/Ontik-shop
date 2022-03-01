@@ -27,11 +27,9 @@ const Signup = () => {
         <div className='m-5'>
             <h2>Register Now </h2>
             <div className="row">
-                <div className="col-md-6 col-sm-12">
-                    <img className='img-fluid' src={signupImg} alt="login-img" />
 
-                </div>
-                <div className="col-md-6 col-sm-12 p-5">
+                <div data-aos="fade-down" data-aos-easing="linear"
+                    data-aos-duration="1500" className="col-md-6 col-sm-12 p-5">
                     <form onSubmit={handleRegister}>
                         <label htmlFor="">Name</label><br />
                         <input className='rounded-pill' type="text" name="name"
@@ -49,6 +47,11 @@ const Signup = () => {
 
                     <br /><br />
                     <p>   Already have an account? <Link to='/login'>Login Now </Link></p>
+
+                </div>
+                <div data-aos="fade-up" data-aos-easing="linear"
+                    data-aos-duration="1500" className="col-md-6 col-sm-12">
+                    <img className='img-fluid' src={signupImg} alt="login-img" />
 
                 </div>
             </div>

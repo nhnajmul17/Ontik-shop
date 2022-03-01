@@ -23,7 +23,7 @@ const OrderReview = () => {
     const [orders, setOrders] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addtocart/${user.email}`)
+        fetch(`https://safe-sands-77688.herokuapp.com/addtocart/${user.email}`)
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [user])
@@ -31,7 +31,7 @@ const OrderReview = () => {
 
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/addtocart/${id}`, {
+        fetch(`https://safe-sands-77688.herokuapp.com/addtocart/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -52,7 +52,7 @@ const OrderReview = () => {
 
     const handleDeleteCart = (email) => {
         console.log(email);
-        fetch(`http://localhost:5000/ordercart/${email}`, {
+        fetch(`https://safe-sands-77688.herokuapp.com/ordercart/${email}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -98,7 +98,7 @@ const OrderReview = () => {
         data.quantity = totalQuantity
         data.price = grandTotal
         data.status = 'Pending'
-        fetch('http://localhost:5000/orders', {
+        fetch('https://safe-sands-77688.herokuapp.com/orders', {
             method: 'POST',
             headers: {
 

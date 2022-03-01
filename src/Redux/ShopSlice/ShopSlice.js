@@ -2,24 +2,24 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 
 export const fetchProducts = createAsyncThunk("shop/items", async () => {
-    const response = await fetch('http://localhost:5000/products')
+    const response = await fetch('https://safe-sands-77688.herokuapp.com/products')
         .then((res) => res.json());
     return response;
 });
 
 export const fetchCartProducts = createAsyncThunk("shop/products", async (email) => {
-    const response = await fetch(`http://localhost:5000/addtocart/${email}`)
+    const response = await fetch(`https://safe-sands-77688.herokuapp.com/addtocart/${email}`)
         .then(res => res.json())
     return response;
 });
 export const fetchUserOrders = createAsyncThunk("shop/orders", async (email) => {
-    const response = await fetch(`http://localhost:5000/orders?email=${email}`)
+    const response = await fetch(`https://safe-sands-77688.herokuapp.com/orders?email=${email}`)
         .then(res => res.json())
     return response;
 });
 
 export const fetchAllOrders = createAsyncThunk("shop/allOrders", async (email) => {
-    const response = await fetch('http://localhost:5000/allorders')
+    const response = await fetch('https://safe-sands-77688.herokuapp.com/allorders')
         .then(res => res.json())
     return response;
 });

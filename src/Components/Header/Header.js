@@ -10,7 +10,7 @@ const Header = () => {
     const { user, logout, admin } = useAuth()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addtocart/${user.email}`)
+        fetch(`https://safe-sands-77688.herokuapp.com/addtocart/${user.email}`)
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [user.email, orders])

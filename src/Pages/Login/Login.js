@@ -26,11 +26,13 @@ const Login = () => {
         <div className='m-5'>
             <h2>Login To Ontik</h2>
             <div className="row">
-                <div className="col-md-6 col-sm-12">
+                <div data-aos="flip-up" data-aos-easing="linear"
+                    data-aos-duration="1500" className="col-md-6 col-sm-12">
                     <img className='img-fluid' src={loginImg} alt="login-img" />
 
                 </div>
-                <div className="col-md-6 col-sm-12 p-5">
+                <div data-aos="flip-down" data-aos-easing="linear"
+                    data-aos-duration="1500" className="col-md-6 col-sm-12 p-5">
                     <form onSubmit={handleLogin}>
                         <label>Email</label><br />
                         <input className='rounded-pill' onBlur={handleOnChange} name='email' type="text" /><br />

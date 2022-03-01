@@ -6,6 +6,7 @@ import img3 from '../../Images/3.JPG'
 import img4 from '../../Images/4.JPG'
 import img5 from '../../Images/5.JPG'
 import img6 from '../../Images/6.JPG'
+import img7 from '../../Images/7.JPG'
 
 const UpComing = () => {
 
@@ -55,6 +56,7 @@ const UpComing = () => {
                 <img className='p-5 rounded-circle' src={img4} alt="" />
                 <img className='p-5 rounded-circle' src={img6} alt="" />
                 <img className='p-5 rounded-circle' src={img5} alt="" />
+                <img className='p-5 rounded-circle' src={img7} alt="" />
             </Slider>
 
         </div>

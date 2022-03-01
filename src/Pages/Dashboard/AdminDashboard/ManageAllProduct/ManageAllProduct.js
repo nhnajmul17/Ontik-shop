@@ -16,7 +16,7 @@ const ManageAllProduct = () => {
 
 
     const handleDelete = id => {
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://safe-sands-77688.herokuapp.com/products/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -63,8 +63,9 @@ const ManageAllProduct = () => {
                 </thead>
                 <tbody>
                     {
-                        products.map(product => <tr>
-                            <td></td>
+                        products.map((product, index) => <tr>
+                            <td>{index + 1}</td>
+
                             <td className="w-25 h-25"><img
                                 className="w-50 h-50"
                                 src={product.img}
