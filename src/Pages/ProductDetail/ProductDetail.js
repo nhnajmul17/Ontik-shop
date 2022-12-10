@@ -41,7 +41,7 @@ const ProductDetail = () => {
         data.name = product.name
         data.price = product.price;
         data.email = user.email;
-        fetch('https://safe-sands-77688.herokuapp.com/addtocart', {
+        fetch('https://ontik-shop.onrender.com/addtocart', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

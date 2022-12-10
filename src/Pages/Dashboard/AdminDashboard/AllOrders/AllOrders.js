@@ -10,7 +10,7 @@ const AllOrders = () => {
     /* const [orders, setOrders] = useState([])
 
     useEffect(() => {
-        fetch('https://safe-sands-77688.herokuapp.com/allorders')
+        fetch('https://ontik-shop.onrender.com/allorders')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, []) */
@@ -25,7 +25,7 @@ const AllOrders = () => {
 
 
     const handleUpdate = (id) => {
-        fetch(`https://safe-sands-77688.herokuapp.com/orders/${id}`, {
+        fetch(`https://ontik-shop.onrender.com/orders/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             // body: JSON.stringify(orders),

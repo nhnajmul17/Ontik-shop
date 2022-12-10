@@ -16,7 +16,7 @@ const ManageAllProduct = () => {
 
 
     const handleDelete = id => {
-        fetch(`https://safe-sands-77688.herokuapp.com/products/${id}`, {
+        fetch(`https://ontik-shop.onrender.com/products/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
