@@ -27,11 +27,12 @@ export const fetchAllOrders = createAsyncThunk("shop/allOrders", async (email) =
 
 const initialState = {
     cartProducts: [],
+    isLoading: false,
     addToCart: [],
     items: [],
     searchItem: [],
     userOrders: [],
-    allOrders: []
+    allOrders: [],
 }
 
 
@@ -52,10 +53,17 @@ export const ShopSlice = createSlice({
     },
     extraReducers: (builder) => {
 
-        builder.addCase(fetchProducts.fulfilled, (state, action) => {
+        builder.addCase(fetchProducts.pending, (state, action) => {
+            state.isLoading = true;
+
+        }).addCase(fetchProducts.fulfilled, (state, action) => {
             state.items = action.payload;
+            state.isLoading = false;
             state.searchItem = action.payload;
-        });
+        })
+
+
+
         builder.addCase(fetchCartProducts.fulfilled, (state, action) => {
             state.cartProducts = action.payload;
         });
