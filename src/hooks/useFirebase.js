@@ -1,5 +1,5 @@
 import initializeAuthentication from "../Firebase/firebase.init";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile, sendPasswordResetEmail } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 
@@ -39,8 +39,6 @@ const useFirebase = () => {
             })
             .finally(() => setIsLoading(false));
     }
-
-
     const login = (email, password, location, navigate) => {
         setIsLoading(true)
         signInWithEmailAndPassword(auth, email, password)
@@ -68,6 +66,16 @@ const useFirebase = () => {
 
     }
 
+    const resetPassword = (email) => {
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+
+            })
+            .catch((error) => {
+                // An error happened.
+            })
+
+    }
     const saveUser = (email, name) => {
         const user = { email, name };
         fetch("https://ontik-shop.onrender.com/users", {
@@ -90,12 +98,9 @@ const useFirebase = () => {
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
-
                 setUser(user);
-
             } else {
                 setUser({})
-
             }
             setIsLoading(false)
         });
@@ -106,7 +111,7 @@ const useFirebase = () => {
 
 
 
-    return { user, admin, register, login, logout, isLoading, setIsLoading, authError }
+    return { user, admin, register, login, logout, isLoading, setIsLoading, authError, resetPassword }
 
 }
 export default useFirebase;

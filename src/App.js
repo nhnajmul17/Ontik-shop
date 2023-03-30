@@ -17,6 +17,7 @@ import AddProduct from './Pages/Dashboard/AdminDashboard/AddProduct/AddProduct';
 import AllOrders from './Pages/Dashboard/AdminDashboard/AllOrders/AllOrders';
 import ManageAllProduct from './Pages/Dashboard/AdminDashboard/ManageAllProduct/ManageAllProduct';
 import AdminRoute from './Components/AdminRoute/AdminRoute';
+import ResetPass from './Pages/ResetPass/ResetPass';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
               <Route path='manageAllProducts' element={<AdminRoute><ManageAllProduct /></AdminRoute>}></Route>
             </Route>
             <Route path='/login' element={<Login />}></Route>
+            <Route path='/resetpass' element={<ResetPass />}></Route>
             <Route path='/signup' element={<Signup />}></Route>
             <Route path='*' element={<Error />}></Route>
           </Routes>
