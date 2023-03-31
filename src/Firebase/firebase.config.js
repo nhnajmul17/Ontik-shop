@@ -1,10 +1,10 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyAy8XCbfT6RqcAKCsCgmTFE-RF4Z_tTLII",
-    authDomain: "teck-shop-01.firebaseapp.com",
-    projectId: "teck-shop-01",
-    storageBucket: "teck-shop-01.appspot.com",
-    messagingSenderId: "775027099125",
-    appId: "1:775027099125:web:a2f50fe43ca767695fccbc"
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    projectId: process.env.REACT_APP_projectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId,
 };
 
 export default firebaseConfig;
